@@ -10,7 +10,7 @@ function App() {
       <Router>
         <Routes>
           <Route
-            path="/form"
+            path="/"
             element={<Form />}
           />
           <Route
