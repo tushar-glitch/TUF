@@ -22,8 +22,6 @@ const TABLE_HEAD = [
 
 export function Submissions() {
   const [TABLE_ROWS, setTablerows] = useState([]);
-  const [newCode, setNewCode] = useState([]);
-  const [newInput, setNewInput] = useState([]);
   const username = localStorage.getItem("username");
   
   const [openInput, setOpenInput] = useState(false);
@@ -44,7 +42,7 @@ export function Submissions() {
     setIsLoading(true);
     if (mysub) {
       axios
-        .get(`http://localhost:5000/api/submissions/get/${username}`)
+        .get(`https://tuf-mgn0.onrender.com/api/submissions/get/${username}`)
         .then((res) => {
           // setNewCode(jsesc(res.data.code))
           // setNewInput(jsesc(res.data.input))
@@ -61,7 +59,7 @@ export function Submissions() {
     }
     else {
       axios
-        .get(`http://localhost:5000/api/submissions/get`)
+        .get(`https://tuf-mgn0.onrender.com/api/submissions/get`)
         .then((res) => {
           // setNewCode(jsesc(res.data.code))
           // setNewInput(jsesc(res.data.input))
@@ -220,11 +218,11 @@ export function Submissions() {
                         color="blue-gray"
                         className="font-normal"
                       >
-                        {lang_id == 52
+                        {lang_id === 52
                           ? "C++"
-                          : lang_id == 91
+                          : lang_id === 91
                           ? "Java"
-                          : lang_id == 93
+                          : lang_id === 93
                           ? "Javascript"
                           : "Python"}
                       </Typography>
@@ -244,7 +242,7 @@ export function Submissions() {
                           </DialogHeader>
                           <DialogBody>
                             <pre>
-                              {code.substr(0, Math.min(100, code.length - 1))}
+                              {code.substr(0, Math.min(100, code.length))}
                             </pre>
                           </DialogBody>
                           <DialogFooter>

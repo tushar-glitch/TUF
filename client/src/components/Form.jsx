@@ -8,14 +8,11 @@ export default function Form() {
   var [input, setStdin] = useState("");
   var [code, setCode] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [responseData, setResponseData] = useState(null);
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
     setIsLoading(true);
-    // input = btoa(input);
-    // code = btoa(code);
     localStorage.setItem("username", username);
     console.log("Username:", username);
     console.log("Language:", lang_id);
@@ -23,7 +20,7 @@ export default function Form() {
     console.log("Code:", code);
 
     axios
-      .post("http://localhost:5000/api/submissions/post", {
+      .post("https://tuf-mgn0.onrender.com/api/submissions/post", {
         username,
         lang_id,
         input,
